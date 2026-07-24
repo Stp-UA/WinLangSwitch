@@ -1,56 +1,46 @@
+# --- Project Specific ---
 myDocs/
-.vs
-# Visual Studio
+
+# --- IDEs (Visual Studio, Rider, VS Code) ---
 .vs/
+.idea/
+.vscode/
 *.user
 *.suo
 *.cache
 *.db
 
-# Build artifacts
-bin/
-obj/
+# --- Build & Deployment Artifacts ---
+[Bb]in/
+[Oo]bj/
 build/
 artifacts/
 Publish/
 TestResults/
 
-# WiX Toolset
+# --- WiX Toolset (Installer) ---
 *.wixproj.user
 *.msi
 *.wixpdb
 *.bundle
 
-# GitVersion
-GitVersion.props
-
-# Logs
-*.log
-
-# Runtime outputs
+# --- Runtime & Compilation Outputs ---
 *.exe
 *.dll
 *.pdb
-
-# NuGet
-packages/
-*.nupkg
-
-# Self-contained publish
 *.deps.json
 *.runtimeconfig.json
 
-# Keys (never store in Git)
+# --- Tools & Logs ---
+GitVersion.props
+*.log
+packages/
+*.nupkg
+
+# --- Security (Never store keys in Git!) ---
 *.pfx
 *.snk
 
-# Rider / JetBrains
-.idea/
-*.iml
-
-# VS Code
-.vscode/
-
-# Temporary files
+# --- Temporary files ---
 *.tmp
 *.bak
