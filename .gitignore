@@ -1,0 +1,55 @@
+.vs
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.db
+
+# Build artifacts
+bin/
+obj/
+build/
+artifacts/
+Publish/
+TestResults/
+
+# WiX Toolset
+*.wixproj.user
+*.msi
+*.wixpdb
+*.bundle
+
+# GitVersion
+GitVersion.props
+
+# Logs
+*.log
+
+# Runtime outputs
+*.exe
+*.dll
+*.pdb
+
+# NuGet
+packages/
+*.nupkg
+
+# Self-contained publish
+*.deps.json
+*.runtimeconfig.json
+
+# Keys (never store in Git)
+*.pfx
+*.snk
+
+# Rider / JetBrains
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.bak

@@ -1,0 +1,41 @@
+mode: ContinuousDelivery
+branches:
+  main:
+    tag: ''
+    increment: patch
+    prevent-increment-of-merged-branch-version: true
+
+  develop:
+    tag: alpha
+    increment: minor
+    prevent-increment-of-merged-branch-version: true
+
+  feature:
+    tag: feature
+    increment: patch
+    regex: feature?[/-]
+    source-branches: ['develop', 'main']
+
+  hotfix:
+    tag: hotfix
+    increment: patch
+    regex: hotfix?[/-]
+    source-branches: ['main']
+
+  release:
+    tag: rc
+    increment: patch
+    regex: release?[/-]
+    source-branches: ['main']
+
+ignore:
+  sha: []
+
+commit-message-incrementing: Enabled
+merge-message-strategy: MergeMessage
+
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatch
+assembly-informational-format: '{SemVer}+sha.{ShortSha}'
+
+tag-prefix: 'v'

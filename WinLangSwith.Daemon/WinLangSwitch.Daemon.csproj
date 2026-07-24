@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Optimize>true</Optimize>
+		<AssemblyName>WinLangSwitch.Daemon</AssemblyName>
+
+		<!-- НАСТРОЙКИ SELF-CONTAINED -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>true</SelfContained>
+		<PublishSingleFile>true</PublishSingleFile>
+	</PropertyGroup>
+
+	<!-- ДОБАВЬТЕ ЭТОТ БЛОК ДЛЯ ПЕРЕНОСА .EXE В ПАПКУ РЕСУРСОВ MSI -->
+	<Target Name="PostBuild" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+		<Copy
+		  SourceFiles="$(PublishDir)WinLangSwitch.Daemon.exe"
+		  DestinationFolder="$(ProjectDir)..\installer\WinLangSwitch.msi\files\daemon\"
+		  SkipUnchangedFiles="false" />
+	</Target>
+
+</Project>

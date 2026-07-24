@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Import GitVersion-generated MSBuild properties -->
+  <Import Project="$(MSBuildProjectDirectory)/../GitVersion.props" Condition="Exists('$(MSBuildProjectDirectory)/../GitVersion.props')" />
+
+  <PropertyGroup>
+    <!-- Target -->
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+
+    <!-- Publishing -->
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+
+    <!-- Manifest (for requireAdministrator) -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <!-- Assembly metadata -->
+    <AssemblyName>WinLangSwitch.Clean</AssemblyName>
+    <AssemblyTitle>WinLangSwitch.Clean</AssemblyTitle>
+    <Description>Cleanup tool for WinLangSwitch installation artifacts</Description>
+    <Company>WinLangSwitch Team</Company>
+    <Product>WinLangSwitch Cleanup Tool</Product>
+
+    <!-- Icon -->
+    <ApplicationIcon>clean.ico</ApplicationIcon>
+
+    <!-- Versions from GitVersion -->
+    <Version>$(GitVersion_SemVer)</Version>
+    <FileVersion>$(GitVersion_AssemblySemFileVer)</FileVersion>
+    <AssemblyVersion>$(GitVersion_AssemblySemVer)</AssemblyVersion>
+    <InformationalVersion>$(GitVersion_InformationalVersion)</InformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <None Include="clean.ico" Pack="true" />
+  </ItemGroup>
+
+  <!-- Copy final EXE to build folder after publishing -->
+  <Target Name="PostPublish" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+    <Copy SourceFiles="$(PublishDir)WinLangSwitch.Clean.exe"
+          DestinationFolder="$(ProjectDir)..\build\"
+          SkipUnchangedFiles="false" />
+  </Target>
+
+</Project>
